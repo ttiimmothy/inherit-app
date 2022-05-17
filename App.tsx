@@ -9,86 +9,47 @@
  */
 
 import React from "react";
-import {SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, useColorScheme, View} from "react-native";
-import {Colors, DebugInstructions, Header, LearnMoreLinks, ReloadInstructions} from "react-native/Libraries/NewAppScreen";
+import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
+import {DefaultScreen} from "./src/DefaultScreen";
+import {SettingScreen} from "./src/SettingScreen";
+import {Icon} from "react-native-magnus";
+import {QuestScreen} from "./src/QuestScreen";
 
-const Section: React.FC<{
-  title: string;
-}> = ({children, title}) => {
-  const isDarkMode = useColorScheme() === "dark";
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
+const Tab = createBottomTabNavigator();
 
 const App = () => {
-  const isDarkMode = useColorScheme() === "dark";
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? "light-content" : "dark-content"} />
-      <ScrollView contentInsetAdjustmentBehavior="automatic" style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">Read the docs to discover what to do next:</Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <Tab.Navigator
+      screenOptions={({route}) => ({
+        tabBarIcon: ({focused, color, size}) => {
+          let ionIcon;
+          let materialCommunityIcon;
+          let materialIcon;
+          let octIcon;
+          if (route.name === "Quest") {
+            octIcon = "checklist";
+          } else if (route.name === "Contact") {
+            materialCommunityIcon = focused ? "contacts" : "contacts-outline";
+          } else if (route.name === "Setting") {
+            materialCommunityIcon = focused ? "hexagon-slice-6" : "hexagon-outline";
+          }
+          // You can return any component that you like here
+          return ionIcon ? (
+            <Icon fontFamily="Ionicons" name={ionIcon} fontSize={28} color={color} />
+          ) : materialCommunityIcon ? (
+            <Icon fontFamily="MaterialCommunityIcons" name={materialCommunityIcon} fontSize={28} color={color} />
+          ) : materialIcon ? (
+            <Icon fontFamily="MaterialIcons" name={materialIcon} fontSize={28} color={color} />
+          ) : (
+            octIcon && <Icon fontFamily="Octicons" name={octIcon} fontSize={28} color={color} />
+          );
+        },
+      })}>
+      <Tab.Screen name="Quest" component={QuestScreen} />
+      <Tab.Screen name="Contact" component={DefaultScreen} />
+      <Tab.Screen name="Setting" component={SettingScreen} />
+    </Tab.Navigator>
   );
 };
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: "600",
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: "400",
-  },
-  highlight: {
-    fontWeight: "700",
-  },
-});
 
 export default App;

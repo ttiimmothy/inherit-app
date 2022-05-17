@@ -5,12 +5,19 @@
   "plugins": ["@typescript-eslint"],
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx"],
+      "files": ["*.ts", "*.tsx", "*.js"],
       "rules": {
-        "quotes":["error","double"],
+        "quotes": ["error", "double"],
+        "no-unused-vars": 0,
+        // can be used in unused variables
+        "@typescript-eslint/no-unused-vars": 0,
         "@typescript-eslint/no-shadow": ["error"],
         "no-shadow": "off",
-        "no-undef": "off"
+        "no-undef": "off",
+        // can be empty in <View></View> within return (<View></View>)
+        "react/self-closing-comp": "off",
+        // have inline-style enabled
+        "react-native/no-inline-styles": 0
       }
     }
   ]
