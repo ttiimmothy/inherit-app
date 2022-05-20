@@ -42,9 +42,7 @@ const Section: React.FC<{
 
 export const DefaultScreen = () => {
   const isDarkMode = useColorScheme() === "dark";
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+  const backgroundStyle = {backgroundColor: isDarkMode ? Colors.darker : Colors.lighter};
 
   return (
     <SafeAreaView style={backgroundStyle}>

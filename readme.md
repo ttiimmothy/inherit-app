@@ -17,4 +17,11 @@ chakra ui cannot be used in react native currently
 # link: https://magnus-ui.com
 yarn add react-native-magnus
 yarn add color react-native-animatable react-native-modal deepmerge validate-color
+yarn add react-native-snap-carousel @types/react-native-snap-carousel
 ```
+
+### cautions
+
+- [ ] react native image using require does not accept variable inside the bracket of require()
+
+- [ ] using react-native-snap-carousel plugin can use useState to set ref to carousel rather than useRef, especially if want to use snapToPrev or snapToNext
