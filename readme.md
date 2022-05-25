@@ -18,6 +18,7 @@ chakra ui cannot be used in react native currently
 yarn add react-native-magnus
 yarn add color react-native-animatable react-native-modal deepmerge validate-color
 yarn add react-native-snap-carousel @types/react-native-snap-carousel
+yarn add @react-navigation/stack react-native-gesture-handler
 ```
 
 ### cautions
@@ -25,3 +26,19 @@ yarn add react-native-snap-carousel @types/react-native-snap-carousel
 - [ ] react native image using require does not accept variable inside the bracket of require()
 
 - [ ] using react-native-snap-carousel plugin can use useState to set ref to carousel rather than useRef, especially if want to use snapToPrev or snapToNext
+
+- [ ] in magnus theme provider, flexDir="row" equals to row in attributes, flexDir="column" equals to column
+
+- [ ] add initialRouteName in stack navigator/bottom tab navigation if you meet the `onAnimatedValueUpdate with no listeners registered` warning
+
+- `ref: https://github.com/react-navigation/react-navigation/issues/7839`
+
+### prettier
+
+- for html closing tag to jump to newline
+
+add following line in `.prettierrc`
+
+```yaml
+"bracketSameLine": false,
+```

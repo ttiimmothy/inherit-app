@@ -10,10 +10,10 @@
 
 import React from "react";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
-import {DefaultScreen} from "./src/DefaultScreen";
-import {SettingScreen} from "./src/SettingScreen";
+import {DefaultScreen} from "./src/views/DefaultScreen";
+import {SettingScreen} from "./src/views//SettingScreen";
 import {Icon} from "react-native-magnus";
-import {QuestScreen} from "./src/QuestScreen";
+import {QuestPackage} from "./src/routes/QuestPackage";
 
 const Tab = createBottomTabNavigator();
 
@@ -45,7 +45,7 @@ const App = () => {
           );
         },
       })}>
-      <Tab.Screen name="Quest" component={QuestScreen} />
+      <Tab.Screen name="Quest" component={QuestPackage} options={{headerShown: false}} />
       <Tab.Screen name="Contact" component={DefaultScreen} />
       <Tab.Screen name="Setting" component={SettingScreen} />
     </Tab.Navigator>

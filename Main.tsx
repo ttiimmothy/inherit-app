@@ -6,6 +6,7 @@ import App from "./App";
 export function Main() {
   const theme = {
     fontSize: {
+      text50: 6,
       text100: 10,
       text200: 12,
       text300: 14,

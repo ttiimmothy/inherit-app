@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import {SafeAreaView, View, StyleSheet, Dimensions, TouchableOpacity} from "react-native";
 import {Div, Icon, Image, ScrollDiv, Text} from "react-native-magnus";
 import Carousel from "react-native-snap-carousel";
+import {Props} from "../constants/models";
 
 interface CarouselItem {
   title: string;
@@ -12,16 +13,15 @@ interface CarouselItem {
 interface CarouselRenderItem {
   item: CarouselItem;
 }
-interface Props {
-  navigation: any;
-}
 const {width: screenWidth} = Dimensions.get("window");
+const carouselBackgroundColor = "#263238";
 
 export const QuestScreen = (props: Props) => {
   const [swiper, setSwiper] = useState<Carousel<CarouselItem> | null>();
   const [swiperTwo, setSwiperTwo] = useState<Carousel<CarouselItem> | null>();
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeIndexTwo, setActiveIndexTwo] = useState(0);
+  const [showTakeQuestNumber, setShowTakeQuestNumber] = useState(false);
   const carouselItems: CarouselItem[] = [
     {
       title: "Quest 1",
@@ -61,7 +61,7 @@ export const QuestScreen = (props: Props) => {
 
   function _renderItem(obj: CarouselRenderItem) {
     const {item} = obj;
-    const photoPath = {photo1: require("../assets/photo1.png")};
+    const photoPath = {photo1: require("../../assets/photo1.png")};
 
     return (
       <View style={styles.carousel}>
@@ -72,27 +72,81 @@ export const QuestScreen = (props: Props) => {
         )}
         <Div justifyContent="space-between">
           <Div>
-            <Text fontSize={28} color="white">
-              {item.title}
-            </Text>
+            <Div row>
+              <Text fontSize={28} color="white" pr={5}>
+                {item.title}
+              </Text>
+              {[0, 1, 2, 3, 4].map((index) => {
+                return <Icon name="staro" fontFamily="AntDesign" fontSize={20} color="gray600" key={index} mr={2} />;
+              })}
+            </Div>
             <Text color="white">{item.text}</Text>
           </Div>
-          <Div flexDir="row" justifyContent="space-between" alignItems="center" w={screenWidth * 0.4}>
+          <Div flexDir="row" justifyContent="space-between" alignItems="center" w={screenWidth * 0.5}>
             <Text color="white">Price: $100</Text>
-            <TouchableOpacity
-              style={styles.detailButton}
-              onPress={() => {
-                navigation.dispatch(
-                  CommonActions.navigate({
-                    name: "Setting",
-                  })
-                );
-              }}>
-              <Text color="white">Details</Text>
-            </TouchableOpacity>
+            <Div flexDir="row" alignItems="center">
+              <TouchableOpacity
+                onPress={() => {
+                  setShowTakeQuestNumber(!showTakeQuestNumber);
+                }}
+                style={styles.takeQuestNumber}>
+                {showTakeQuestNumber && (
+                  <Div bg="indigo900" position="absolute" flex={1} bottom={30} right={-30} rounded="md" p={5}>
+                    <Text numberOfLines={2} fontSize="text50" color="white">
+                      You are one of 11 people {"\n"}who want to take this quest
+                    </Text>
+                  </Div>
+                )}
+                <Div position="relative" flexDir="row" mr={45} py={12}>
+                  <Image
+                    source={require("../../assets/anonymous-icon.png")}
+                    resizeMode="contain"
+                    h={24}
+                    w={24}
+                    zIndex={3}
+                    position="absolute"
+                    left={0}
+                    borderWidth={2}
+                    borderColor="gray"
+                    borderRadius={24}
+                  />
+                  <Image
+                    source={require("../../assets/anonymous-icon.png")}
+                    resizeMode="contain"
+                    h={24}
+                    w={24}
+                    zIndex={2}
+                    position="absolute"
+                    left={8}
+                    borderWidth={2}
+                    borderColor="gray"
+                    borderRadius={24}
+                  />
+                  <Image
+                    source={require("../../assets/anonymous-icon.png")}
+                    resizeMode="contain"
+                    h={24}
+                    w={24}
+                    zIndex={1}
+                    position="absolute"
+                    left={16}
+                    borderWidth={2}
+                    borderColor="gray"
+                    borderRadius={24}
+                  />
+                </Div>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.detailButton}
+                onPress={() => {
+                  navigation.navigate("Detail");
+                }}>
+                <Text color="white">Details</Text>
+              </TouchableOpacity>
+            </Div>
           </Div>
         </Div>
-        {item.photo && <Image source={photoPath.photo1} resizeMode="contain" h="100%" w={150} />}
+        {item.photo && <Image source={photoPath.photo1} resizeMode="contain" h="100%" w={screenWidth * 0.3} />}
         {activeIndex < carouselItems.length - 1 && (
           <TouchableOpacity onPress={goForward} style={[styles.button, styles.rightButton]}>
             <Icon fontFamily="FontAwesome5" name="chevron-right" fontSize={14} />
@@ -104,7 +158,7 @@ export const QuestScreen = (props: Props) => {
 
   function _renderItemTwo(obj: CarouselRenderItem) {
     const {item} = obj;
-    const photoPath = {photo1: require("../assets/photo1.png")};
+    const photoPath = {photo1: require("../../assets/photo1.png")};
 
     return (
       <View style={styles.carousel}>
@@ -115,27 +169,28 @@ export const QuestScreen = (props: Props) => {
         )}
         <Div justifyContent="space-between">
           <Div>
-            <Text fontSize={28} color="white">
-              {item.title}
-            </Text>
+            <Div row>
+              <Text fontSize={28} color="white" pr={5}>
+                {item.title}
+              </Text>
+              {[0, 1, 2, 3, 4].map((index) => {
+                return <Icon name="staro" fontFamily="AntDesign" fontSize={20} color="gray600" key={index} mr={2} />;
+              })}
+            </Div>
             <Text color="white">{item.text}</Text>
           </Div>
-          <Div flexDir="row" justifyContent="space-between" alignItems="center" w={screenWidth * 0.4}>
+          <Div flexDir="row" justifyContent="space-between" alignItems="center" w={screenWidth * 0.5}>
             <Text color="white">Price: $100</Text>
             <TouchableOpacity
               style={styles.detailButton}
               onPress={() => {
-                navigation.dispatch(
-                  CommonActions.navigate({
-                    name: "Setting",
-                  })
-                );
+                navigation.navigate("Detail");
               }}>
               <Text color="white">Details</Text>
             </TouchableOpacity>
           </Div>
         </Div>
-        {item.photo && <Image source={photoPath.photo1} resizeMode="contain" h="100%" w={150} />}
+        {item.photo && <Image source={photoPath.photo1} resizeMode="contain" h="100%" w={screenWidth * 0.3} />}
         {activeIndexTwo < carouselItems.length - 1 && (
           <TouchableOpacity onPress={goForwardTwo} style={[styles.button, styles.rightButton]}>
             <Icon fontFamily="FontAwesome5" name="chevron-right" fontSize={14} />
@@ -146,7 +201,7 @@ export const QuestScreen = (props: Props) => {
   }
 
   return (
-    <SafeAreaView style={styles.safeAreaView}>
+    <SafeAreaView style={styles.container}>
       <ScrollDiv flex={1} bg="white" px="lg" py="sm">
         <Div flexDir="row" justifyContent="space-between">
           <Div borderWidth={1} borderColor="gray500" rounded="sm" p="md">
@@ -162,13 +217,13 @@ export const QuestScreen = (props: Props) => {
           </Text>
           <Carousel
             layout="default"
-            ref={e => setSwiper(e)}
+            ref={(e) => setSwiper(e)}
             data={carouselItems}
             sliderWidth={screenWidth - 30}
             itemWidth={screenWidth - 40}
             itemHeight={screenWidth / 2}
             renderItem={_renderItem}
-            onSnapToItem={index => setActiveIndex(index)}></Carousel>
+            onSnapToItem={(index) => setActiveIndex(index)}></Carousel>
         </Div>
         <Div pt="sm">
           <Text color="gray700" fontSize="text600" fontWeight="bold">
@@ -176,12 +231,26 @@ export const QuestScreen = (props: Props) => {
           </Text>
           <Carousel
             layout="default"
-            ref={e => setSwiperTwo(e)}
+            ref={(e) => setSwiperTwo(e)}
             data={carouselItems}
             sliderWidth={screenWidth - 30}
             itemWidth={screenWidth - 40}
             renderItem={_renderItemTwo}
-            onSnapToItem={index => setActiveIndexTwo(index)}></Carousel>
+            onSnapToItem={(index) => setActiveIndexTwo(index)}></Carousel>
+        </Div>
+        <Div pt="sm" px="lg" flexDir="row" justifyContent="space-around">
+          <TouchableOpacity style={styles.questButton}>
+            <Icon fontFamily="FontAwesome" name="handshake-o" fontSize={24} color="green600" />
+            <Text fontSize="text200" textAlign="center">
+              Take {"\n"}Quest
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.questButton}>
+            <Icon fontFamily="MaterialCommunityIcons" name="note-edit-outline" fontSize={24} color="green600" />
+            <Text fontSize="text200" textAlign="center">
+              Publish Quest
+            </Text>
+          </TouchableOpacity>
         </Div>
       </ScrollDiv>
     </SafeAreaView>
@@ -189,11 +258,11 @@ export const QuestScreen = (props: Props) => {
 };
 
 const styles = StyleSheet.create({
-  safeAreaView: {
+  container: {
     flex: 1,
   },
   carousel: {
-    backgroundColor: "#263238",
+    backgroundColor: carouselBackgroundColor,
     borderRadius: 5,
     width: "100%",
     height: screenWidth * 0.4,
@@ -224,5 +293,16 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderWidth: 1,
     borderColor: "#fff",
+  },
+  questButton: {
+    width: screenWidth * 0.2,
+    alignItems: "center",
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: "gray",
+    paddingVertical: 5,
+  },
+  takeQuestNumber: {
+    flexDirection: "row",
   },
 });
