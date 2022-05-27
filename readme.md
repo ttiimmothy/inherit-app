@@ -19,6 +19,10 @@ yarn add react-native-magnus
 yarn add color react-native-animatable react-native-modal deepmerge validate-color
 yarn add react-native-snap-carousel @types/react-native-snap-carousel
 yarn add @react-navigation/stack react-native-gesture-handler
+# how to use moment.js
+# link: https://betterprogramming.pub/using-moment-js-in-react-native-d1b6ebe226d4
+yarn add moment
+yarn add -D eslint-plugin-unused-imports
 ```
 
 ### cautions
@@ -32,6 +36,10 @@ yarn add @react-navigation/stack react-native-gesture-handler
 - [ ] add initialRouteName in stack navigator/bottom tab navigation if you meet the `onAnimatedValueUpdate with no listeners registered` warning
 
 - `ref: https://github.com/react-navigation/react-navigation/issues/7839`
+
+- [ ] scroll view cannot scroll to bottom can add style to content container style
+
+= `ref: https://stackoverflow.com/questions/45132731/cannot-scroll-to-bottom-of-scrollview-in-react-native`
 
 ### prettier
 

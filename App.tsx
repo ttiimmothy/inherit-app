@@ -26,7 +26,7 @@ const App = () => {
           let materialCommunityIcon;
           let materialIcon;
           let octIcon;
-          if (route.name === "Quest") {
+          if (route.name === "QuestRoute") {
             octIcon = "checklist";
           } else if (route.name === "Contact") {
             materialCommunityIcon = focused ? "contacts" : "contacts-outline";
@@ -45,7 +45,7 @@ const App = () => {
           );
         },
       })}>
-      <Tab.Screen name="Quest" component={QuestPackage} options={{headerShown: false}} />
+      <Tab.Screen name="QuestRoute" component={QuestPackage} options={{headerShown: false, title: "Quest"}} />
       <Tab.Screen name="Contact" component={DefaultScreen} />
       <Tab.Screen name="Setting" component={SettingScreen} />
     </Tab.Navigator>

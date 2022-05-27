@@ -2,7 +2,7 @@
   "root": true,
   "extends": "@react-native-community",
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint","unused-imports"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js"],
@@ -17,7 +17,9 @@
         // can be empty in <View></View> within return (<View></View>)
         "react/self-closing-comp": "off",
         // have inline-style enabled
-        "react-native/no-inline-styles": 0
+        "react-native/no-inline-styles": 0,
+        // no unused imports
+        "unused-imports/no-unused-imports": "error"
       }
     }
   ]
