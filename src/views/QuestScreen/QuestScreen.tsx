@@ -45,7 +45,11 @@ export const QuestScreen = (props: OnlyNavigationProps) => {
               Take {"\n"}Quest
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.questButton}>
+          <TouchableOpacity
+            style={styles.questButton}
+            onPress={() => {
+              navigation.navigate("Publish");
+            }}>
             <Icon fontFamily="MaterialCommunityIcons" name="note-edit-outline" fontSize={24} color="green600" />
             <Text fontSize="text200" textAlign="center">
               Publish Quest

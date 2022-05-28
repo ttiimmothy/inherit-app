@@ -11,9 +11,13 @@ export const blue500 = "#4299e1";
 export const green300 = "#9ae6b4";
 export const green700 = "#2f855a";
 
+export const teal700 = "#2c7a7b";
+
 export const prizeColor = green700;
 export const palePrizeColor = green300;
 export const bailColor = red500;
 export const carouselBackgroundColor = "#263238";
 export const paleStarsColor = gray400;
 export const starsColor = gray600;
+export const navigationArrowColor = teal700;
+export const inputFocusColor = teal700;

@@ -23,6 +23,7 @@ yarn add @react-navigation/stack react-native-gesture-handler
 # link: https://betterprogramming.pub/using-moment-js-in-react-native-d1b6ebe226d4
 yarn add moment
 yarn add -D eslint-plugin-unused-imports
+yarn add @react-native-picker/picker
 ```
 
 ### cautions
@@ -39,7 +40,7 @@ yarn add -D eslint-plugin-unused-imports
 
 - [ ] scroll view cannot scroll to bottom can add style to content container style
 
-= `ref: https://stackoverflow.com/questions/45132731/cannot-scroll-to-bottom-of-scrollview-in-react-native`
+- `ref: https://stackoverflow.com/questions/45132731/cannot-scroll-to-bottom-of-scrollview-in-react-native`
 
 ### prettier
 

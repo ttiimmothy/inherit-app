@@ -1,10 +1,13 @@
 import {StyleSheet} from "react-native";
-import {blue500} from "../../constants/colors";
+import {screenWidth} from "../../utils/screen";
 
 export const styles = StyleSheet.create({
   detailButton: {
     padding: 5,
     borderRadius: 5,
     borderWidth: 1,
+  },
+  searchInput: {
+    width: screenWidth * 0.6,
   },
 });
