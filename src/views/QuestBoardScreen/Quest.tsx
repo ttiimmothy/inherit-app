@@ -37,7 +37,7 @@ export function Quest(props: Props) {
   const colorsCondition = colors !== "white" && colors !== "green";
 
   return (
-    <Div bg={bg} shadow={"sm"} p="md" m="sm" rounded={"md"}>
+    <Div bg={bg} shadow={"sm"} p="md" mx="sm" mb="md" rounded={"md"} mt={number === 0 ? "lg" : "md"}>
       <Div row justifyContent="space-between" alignItems="center">
         <Text color={colorsCondition ? paleTitleColor : titleColor} fontSize={titleFontSize} fontWeight="bold">
           Quest {number + 1}

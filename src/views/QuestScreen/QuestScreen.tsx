@@ -52,7 +52,7 @@ export const QuestScreen = (props: OnlyNavigationProps) => {
             }}>
             <Icon fontFamily="MaterialCommunityIcons" name="note-edit-outline" fontSize={24} color="green600" />
             <Text fontSize="text200" textAlign="center">
-              Publish Quest
+              Publish {"\n"}Quest
             </Text>
           </TouchableOpacity>
         </Div>

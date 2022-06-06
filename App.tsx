@@ -8,16 +8,19 @@
  * @format
  */
 
-import React from "react";
+import React, {useLayoutEffect} from "react";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import {DefaultScreen} from "./src/views/DefaultScreen";
 import {SettingScreen} from "./src/views//SettingScreen";
 import {Icon} from "react-native-magnus";
 import {QuestPackage} from "./src/routes/QuestPackage";
+import {createStackNavigator} from "@react-navigation/stack";
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
-const App = () => {
+
+const HomeTabPackage = () => {
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
@@ -26,6 +29,11 @@ const App = () => {
           let materialCommunityIcon;
           let materialIcon;
           let octIcon;
+          // let focusSetting = () => {
+          // 	fontStyle = focused ? "norms-bold" : "norms-regular";
+          // 	fontColor = focused ? "white" : unFocusColor;
+          // 	fontSize = focused ? 18 : 17;
+          // };
           if (route.name === "QuestRoute") {
             octIcon = "checklist";
           } else if (route.name === "Contact") {
@@ -45,11 +53,19 @@ const App = () => {
           );
         },
       })}>
-      <Tab.Screen name="QuestRoute" component={QuestPackage} options={{headerShown: false, title: "Quest"}} />
+      <Tab.Screen name="QuestRoute" component={QuestPackage} options={{headerShown: false}} />
       <Tab.Screen name="Contact" component={DefaultScreen} />
       <Tab.Screen name="Setting" component={SettingScreen} />
     </Tab.Navigator>
   );
 };
+
+function App() {
+  return (
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name="home" component={HomeTabPackage} />
+    </Stack.Navigator>
+  );
+}
 
 export default App;

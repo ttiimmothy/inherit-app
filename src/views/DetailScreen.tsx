@@ -38,18 +38,18 @@ export function DetailScreen(props: OnlyNavigationProps) {
             <Text mt={5}>Publish date: {moment(new Date()).format("DD MMM YYYY")}</Text>
           </Div>
         </Div>
-        <Div rounded="md" m="lg" p="md" borderWidth={1} borderColor="gray700">
-          <Text textAlign="center" fontSize="text400" color="gray600">
+        <Div rounded="md" m="lg" p="md" borderWidth={1} borderColor="gray500">
+          <Text textAlign="center" fontSize="text400" color="gray600" fontWeight="bold">
             Quest 1
           </Text>
-          <Div rounded="md" m="lg" p="md" borderWidth={1} borderColor="gray500" minH={screenWidth * 0.6}>
+          <Div rounded="md" mx="lg" my="md" p="md" borderWidth={1} borderColor="gray500" minH={screenWidth * 0.6}>
             <Text>Write whatever you want</Text>
           </Div>
           <Div row justifyContent="space-between" p="md">
-            <Text fontSize="text300" color={bailColor}>
+            <Text fontSize="text300" color={bailColor} pl="md" fontWeight="bold">
               Bail: $20
             </Text>
-            <Text fontSize="text300" color={prizeColor}>
+            <Text fontSize="text300" color={prizeColor} pr="md" fontWeight="bold">
               Prize: $100
             </Text>
           </Div>

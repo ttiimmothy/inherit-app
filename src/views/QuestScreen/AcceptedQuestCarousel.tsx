@@ -54,7 +54,7 @@ export function AcceptedQuestCarousel(props: OnlyNavigationProps) {
                 style={styles.takeQuestNumber}>
                 {showTakeQuestNumber && (
                   <Div bg="indigo900" position="absolute" flex={1} bottom={30} right={-30} rounded="md" p={5}>
-                    <Text numberOfLines={2} fontSize="text50" color="white">
+                    <Text numberOfLines={2} fontSize="text100" color="white">
                       You are one of 11 people {"\n"}who want to take this quest
                     </Text>
                   </Div>
@@ -68,7 +68,7 @@ export function AcceptedQuestCarousel(props: OnlyNavigationProps) {
                     zIndex={3}
                     position="absolute"
                     left={0}
-                    borderWidth={2}
+                    borderWidth={1}
                     borderColor="gray"
                     borderRadius={24}
                   />
@@ -80,7 +80,7 @@ export function AcceptedQuestCarousel(props: OnlyNavigationProps) {
                     zIndex={2}
                     position="absolute"
                     left={8}
-                    borderWidth={2}
+                    borderWidth={1}
                     borderColor="gray"
                     borderRadius={24}
                   />
@@ -92,7 +92,7 @@ export function AcceptedQuestCarousel(props: OnlyNavigationProps) {
                     zIndex={1}
                     position="absolute"
                     left={16}
-                    borderWidth={2}
+                    borderWidth={1}
                     borderColor="gray"
                     borderRadius={24}
                   />

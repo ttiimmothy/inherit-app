@@ -22,12 +22,15 @@ export function QuestPackage(props: OnlyNavigationProps) {
         <Icon name="arrowleft" fontFamily="AntDesign" fontSize={24} p="md" color={navigationArrowColor} />
       </TouchableOpacity>
     ),
+    headerTitleStyle: {
+      fontSize: 18,
+    },
   };
 
   return (
     // need to have initialRouteName to eliminate warning
     <QuestStack.Navigator initialRouteName="QuestFirst">
-      <QuestStack.Screen name="Quest" component={QuestScreen} />
+      <QuestStack.Screen name="Quest" component={QuestScreen} options={{headerTitleStyle: {fontSize: 18}}} />
       <QuestStack.Screen name="Detail" component={DetailScreen} options={options} />
       <QuestStack.Screen name="QuestBoard" component={QuestBoardScreen} options={options} />
       <QuestStack.Screen name="Publish" component={PublishScreen} options={{...options, title: "Publish Quest"}} />

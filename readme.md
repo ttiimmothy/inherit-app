@@ -24,6 +24,8 @@ yarn add @react-navigation/stack react-native-gesture-handler
 yarn add moment
 yarn add -D eslint-plugin-unused-imports
 yarn add @react-native-picker/picker
+yarn add react-native-picker-select
+yarn add react-native-date-picker
 ```
 
 ### cautions
